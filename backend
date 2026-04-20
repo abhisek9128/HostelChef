@@ -1,0 +1,21 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+let recipes = [];
+
+/* ADD */
+app.post("/add", (req,res)=>{
+    recipes.push(req.body);
+    res.send("added");
+});
+
+/* GET */
+app.get("/recipes", (req,res)=>{
+    res.json(recipes);
+});
+
+app.listen(5000, ()=>console.log("Server running"));
