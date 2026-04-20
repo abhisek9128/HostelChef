@@ -2,197 +2,91 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Recipe Site</title>
+<title>HostelChef 🍲</title>
 
 <style>
 
-/* 🌈 Background */
 body {
     font-family: Arial;
-    text-align: center;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    margin: 0;
+    transition: 0.3s;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
 }
 
-/* 🍲 Main Title */
+.dark {
+    background: #121212;
+    color: white;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
 h1 {
     color: #ff5722;
-    transition: 0.3s;
 }
 
-h1:hover {
-    transform: scale(1.2);
-    text-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
+/* Controls */
+.controls {
+    text-align: center;
+    margin: 10px;
 }
 
-/* 📦 Recipe Card */
-.recipe {
+button {
+    margin: 5px;
+    padding: 8px 15px;
     border: none;
-    margin: 20px;
-    padding: 15px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: 0.3s;
+    border-radius: 20px;
     cursor: pointer;
+    background: #ff5722;
+    color: white;
+}
+
+input {
+    padding: 8px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Grid */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card */
+.recipe {
+    background: rgba(255,255,255,0.85);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.dark .recipe {
+    background: #1e1e1e;
 }
 
 .recipe:hover {
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    background: #ffffff;
 }
 
-/* 🍜 Maggi Title */
-.maggi-title {
-    transition: 0.3s;
-    display: inline-block;
-    position: relative;
+.recipe img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-.maggi-title:hover {
-    transform: scale(1.2) rotate(-2deg);
+.recipe h2 {
     color: #ff5722;
-    text-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
 }
 
-.maggi-title::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #ff5722;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.maggi-title:hover::after {
-    width: 100%;
-}
-
-/* 🍝 Pasta Title */
-.pasta-title {
-    transition: 0.3s;
-    display: inline-block;
-    position: relative;
-}
-
-.pasta-title:hover {
-    transform: scale(1.2);
-    color: #ff9800;
-    text-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
-}
-
-.pasta-title::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #ff9800;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.pasta-title:hover::after {
-    width: 100%;
-}
-
-/* ☕ Tea Title */
-.tea-title {
-    transition: 0.3s;
-    display: inline-block;
-    position: relative;
-}
-
-.tea-title:hover {
-    transform: scale(1.15) translateY(-5px);
-    color: #6d4c41;
-    text-shadow: 0 0 8px rgba(109, 76, 65, 0.6);
-}
-
-.tea-title::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #6d4c41;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.tea-title:hover::after {
-    width: 100%;
-}
-
-/*  Chicken Curry */
-.nonveg-title {
-    transition: 0.3s;
-    display: inline-block;
-    position: relative;
-}
-
-.nonveg-title:hover {
-    transform: scale(1.15) translateY(-5px);
-    color: #fda43e;
-    text-shadow: 0 0 8px rgba(109, 76, 65, 0.6);
-}
-
-.nonveg-title::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #f5fb46;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.nonveg-title:hover::after {
-    width: 100%;
-}
-
-/* 🍳 Omelette Title */
-.omelette-title {
-    transition: 0.3s;
-    display: inline-block;
-    position: relative;
-}
-
-.omelette-title:hover {
-    transform: rotate(3deg) scale(1.15);
-    color: #fbc02d;
-    text-shadow: 0 0 10px rgba(251, 192, 45, 0.7);
-}
-
-.omelette-title::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #fbc02d;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.omelette-title:hover::after {
-    width: 100%;
-}
-
-/* 📜 Inner Text */
-.recipe p {
-    transition: 0.3s;
-}
-
-.recipe p:hover {
-    transform: translateX(10px) scale(1.03);
-    color: #ff5722;
-    background: #fff3e0;
-    border-radius: 8px;
-    padding: 5px;
+.hidden {
+    display: none;
 }
 
 </style>
@@ -200,71 +94,112 @@ h1:hover {
 
 <body>
 
-<h1>🍲 My Recipe Website 🍴</h1>
-
-<!-- 🍜 Maggi -->
-<div class="recipe">
-    <h2 class="maggi-title">🍜 Maggi</h2>
-    <p><b>🧂 Ingredients:</b> Maggi, water, masala</p>
-    <p><b>👨‍🍳 Steps:</b> Boil water → add Maggi → cook 2 min</p>
+<div class="header">
+<h1>🍲 HostelChef 🍴</h1>
 </div>
 
-<!-- 🍳 Omelette -->
-<div class="recipe"> 
-    <h2 class="omelette-title">🍳 Omelette</h2>
-    <p><b>🥚 Ingredients:</b> Eggs, salt, oil</p>
-    <p><b>🔥 Steps:</b> Beat eggs → cook in pan</p>
+<div class="controls">
+<input type="text" id="search" placeholder="Search recipes..." onkeyup="searchRecipe()">
+
+<br>
+
+<button onclick="filter('all')">All</button>
+<button onclick="filter('veg')">Veg 🥦</button>
+<button onclick="filter('nonveg')">Non-Veg 🍗</button>
+<button onclick="toggleDark()">🌙 Dark Mode</button>
 </div>
 
-<!-- 🍝 Pasta -->
-<div class="recipe"> 
-    <h2 class="pasta-title">🍝 Pasta</h2>
-    <p><b>🧂 Ingredients:</b> Pasta, salt, oil, onion, tomato, garlic, sauce</p>
-    <p><b>👨‍🍳 Step 1:</b> Boil pasta</p>
-    <p><b>🔪 Step 2:</b> Chop vegetables</p>
-    <p><b>🍳 Step 3:</b> Cook everything together</p>
+<div class="container" id="recipes">
+
+<!-- VEG -->
+<div class="recipe veg">
+<img src="https://source.unsplash.com/300x200/?paneer">
+<h2>Paneer Butter Masala</h2>
+<p>Creamy tomato paneer curry</p>
 </div>
 
-<!-- ☕ Tea -->
-<div class="recipe"> 
-    <h2 class="tea-title">☕ Tea</h2>
-    <p><b>🧂 Ingredients:</b> Water, milk, tea leaves, sugar</p>
-    <p><b>🔥 Step 1:</b> Boil water</p>
-    <p><b>🍃 Step 2:</b> Add tea leaves & sugar</p>
-    <p><b>🥛 Step 3:</b> Add milk & boil</p>
-    <p><b>☕ Step 4:</b> Strain & serve</p>
+<div class="recipe veg">
+<img src="https://source.unsplash.com/300x200/?dal">
+<h2>Dal Tadka</h2>
+<p>Dal with spicy tempering</p>
 </div>
 
-<!-- 🍗 Chicken Curry -->
-<div class="recipe"> 
-   <h2 class="nonveg-title">🍗 Chicken Curry</h2>
-    <p><b>🧂 Ingredients:</b> Chicken, onion, tomato, garlic, spices, oil</p>
-    <p><b>🔪 Step 1:</b> Chop onion and tomato</p>
-    <p><b>🍳 Step 2:</b> Heat oil and cook onion & garlic</p>
-    <p><b>🍅 Step 3:</b> Add tomato and spices</p>
-    <p><b>🍗 Step 4:</b> Add chicken and cook well</p>
-    <p><b>🔥 Step 5:</b> Cook for 15–20 minutes</p>
+<div class="recipe veg">
+<img src="https://source.unsplash.com/300x200/?fried,rice">
+<h2>Veg Fried Rice</h2>
+<p>Rice with veggies & sauce</p>
 </div>
 
-<!-- 🍗 Chicken Fry -->
-<div class="recipe"> 
-    <h2 class="nonveg-title">🍗 Chicken Fry</h2>
-    <p><b>🧂 Ingredients:</b> Chicken, spices, oil, ginger, garlic</p>
-    <p><b>🥣 Step 1:</b> Marinate chicken with spices</p>
-    <p><b>⏱ Step 2:</b> Rest for 20 minutes</p>
-    <p><b>🍳 Step 3:</b> Heat oil in pan</p>
-    <p><b>🔥 Step 4:</b> Fry chicken until golden</p>
+<div class="recipe veg">
+<img src="https://source.unsplash.com/300x200/?poha">
+<h2>Poha</h2>
+<p>Light breakfast recipe</p>
 </div>
 
-<!-- 🍳 Egg Curry -->
-<div class="recipe"> 
-     <h2 class="nonveg-title">🍗 Egg Curry</h2>
-    <p><b>🥚 Ingredients:</b> Boiled eggs, onion, tomato, spices, oil</p>
-    <p><b>🔪 Step 1:</b> Chop onion and tomato</p>
-    <p><b>🍳 Step 2:</b> Heat oil and cook onion</p>
-    <p><b>🍅 Step 3:</b> Add tomato and spices</p>
-    <p><b>🥚 Step 4:</b> Add boiled eggs</p>
-    <p><b>🔥 Step 5:</b> Cook for 10 minutes</p>
+<!-- NON-VEG -->
+<div class="recipe nonveg">
+<img src="https://source.unsplash.com/300x200/?chicken,curry">
+<h2>Chicken Curry</h2>
+<p>Spicy chicken gravy</p>
 </div>
+
+<div class="recipe nonveg">
+<img src="https://source.unsplash.com/300x200/?chicken,fry">
+<h2>Chicken Fry</h2>
+<p>Crispy fried chicken</p>
+</div>
+
+<div class="recipe nonveg">
+<img src="https://source.unsplash.com/300x200/?mutton,curry">
+<h2>Mutton Curry</h2>
+<p>Slow cooked mutton</p>
+</div>
+
+<div class="recipe nonveg">
+<img src="https://source.unsplash.com/300x200/?egg,curry">
+<h2>Egg Curry</h2>
+<p>Eggs in masala gravy</p>
+</div>
+
+<div class="recipe nonveg">
+<img src="https://source.unsplash.com/300x200/?fish,fry">
+<h2>Fish Fry</h2>
+<p>Spicy fried fish</p>
+</div>
+
+</div>
+
+<script>
+
+/* Filter */
+function filter(type) {
+    let items = document.querySelectorAll('.recipe');
+    items.forEach(item => {
+        if (type === 'all') {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.toggle('hidden', !item.classList.contains(type));
+        }
+    });
+}
+
+/* Search */
+function searchRecipe() {
+    let input = document.getElementById('search').value.toLowerCase();
+    let items = document.querySelectorAll('.recipe');
+
+    items.forEach(item => {
+        let text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+
+/* Dark Mode */
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+
+</script>
+
 </body>
 </html>
